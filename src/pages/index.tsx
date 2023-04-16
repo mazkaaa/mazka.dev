@@ -1,23 +1,30 @@
-/* eslint-disable @next/next/no-img-element */
-import { Inter } from "next/font/google";
-import Image from "next/image";
-
-const inter = Inter({ subsets: ["latin"] });
+import Link from "next/link";
 
 export default function Home() {
   return (
     <>
-      <div className="container mx-auto">
-        <div className="h-screen">
-          <div className="flex flex-col z-50 h-full justify-center">
-            <h1 className="text-white mix-blend-difference text-6xl font-semibold">
-              Software Engineer
-            </h1>
+      <div className="absolute mix-blend-difference text-gray-300 w-screen h-screen tracking-wide">
+        <div className="p-4 w-full h-full flex flex-col justify-between">
+          <div className="flex flex-row justify-between">
+            <Link href={"https://blog.mazka.dev/"} className="">Blog</Link>
+            <Link href={"https://github.com/mazkaaa/"}>Github</Link>
+          </div>
+          <div className="flex flex-col justify-center items-center text-center">
+            <button>Learn More</button>
           </div>
         </div>
       </div>
-      <div className="absolute right-0 bottom-1/4 w-2/3 lg:bottom-0 lg:w-auto lg:max-w-none lg:h-screen -z-10">
-        <img src={"/IMG_4452.jpg"} alt="Azka" className="h-full object-cover" />
+      <div className="container mx-auto">
+        <div className="h-screen">
+          <div className="flex flex-col z-50 h-full w-full justify-center items-center text-center space-y-2">
+            <h3 className="mix-blend-difference text-4xl font-normal text-white">
+              Muhammad Azka
+            </h3>
+            <p className="mix-blend-difference text-sm font-normal text-gray-300 tracking-wider">
+              Web Developer / AR Developer / Photographer
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );
