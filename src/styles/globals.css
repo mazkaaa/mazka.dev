@@ -5,4 +5,20 @@
 html {
   background-color: rgb(9, 9, 9);
   font-family: 'Hanken Grotesk', sans-serif;
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+
+div#__next {
+  height: 100%;
+}
+
+#tsparticles {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
