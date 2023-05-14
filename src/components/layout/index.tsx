@@ -1,5 +1,6 @@
+import LocomotiveScroll from 'locomotive-scroll';
 import Head from 'next/head';
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 
 const Layout = ({children}: any) => {
   
@@ -11,7 +12,9 @@ const Layout = ({children}: any) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div data-scroll-container className='w-full h-full'>{children}</div>
+      <div className="w-full h-full" data-scroll-container>
+        {children}
+      </div>
     </>
   );
 }

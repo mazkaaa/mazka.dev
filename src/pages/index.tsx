@@ -1,11 +1,13 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Link from 'next/link';
 
 export default function Home() {
+
   const particleOptions: ISourceOptions = {
+    zLayers: 100,
     fullScreen: {
       enable: false
     },
@@ -138,7 +140,7 @@ export default function Home() {
   return (
     <>
       <section className="w-full h-full" data-scroll-section>
-        <div className="w-full h-full flex flex-col justify-between text-white p-4">
+        <div className="w-full h-full flex flex-col justify-between text-white p-4 absolute z-50">
           <header className="flex justify-between tracking-wide">
             <Link href={"https://blog.mazka.dev/"} data-scroll>
               Blog
@@ -150,7 +152,7 @@ export default function Home() {
           <div
             className="flex flex-col items-center"
             data-scroll
-            data-scroll-speed="-1"
+            data-scroll-speed="2"
           >
             <span className="text-white text-3xl tracking-wide">
               Muhammad Azka
@@ -159,7 +161,7 @@ export default function Home() {
               Web Developer / AR Developer / Photographer
             </span>
           </div>
-          <div className="flex justify-center tracking-wide" data-scroll data-scroll-speed="20">Learn more</div>
+          <div className="flex justify-center tracking-wide">Learn more</div>
         </div>
         <Particles
           id="tsparticles"
@@ -169,7 +171,7 @@ export default function Home() {
           data-scroll
         />
       </section>
-      <section className="w-full h-full"></section>
+      <section></section>
     </>
   );
 }
