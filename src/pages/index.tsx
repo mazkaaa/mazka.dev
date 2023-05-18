@@ -171,7 +171,9 @@ export default function Home() {
           data-scroll
         />
       </section>
-      <section></section>
+      <section>
+        
+      </section>
     </>
   );
 }
