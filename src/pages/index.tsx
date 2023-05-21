@@ -171,8 +171,10 @@ export default function Home() {
           data-scroll
         />
       </section>
-      <section>
-        
+      <section className="container mx-auto p-4" data-scroll-section>
+        <p className="text-white" data-scroll-delay="5">
+          I&apos;m Muhammad Azka.
+        </p>
       </section>
     </>
   );
