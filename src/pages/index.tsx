@@ -1,10 +1,25 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
+
+  // const refScrollContainer = useRef(null);
+
+  // useEffect(() => {
+  //   async function getLocomotive() {
+  //     const Locomotive = (await import("locomotive-scroll")).default;
+  //     new Locomotive({
+  //       el: refScrollContainer.current!,
+  //       smooth: true,
+  //     });
+  //   }
+
+  //   getLocomotive();
+  // }, []);
 
   const particleOptions: ISourceOptions = {
     zLayers: 100,
@@ -138,22 +153,14 @@ export default function Home() {
   );
 
   return (
-    <>
-      <section className="w-full h-full" data-scroll-section>
+    <div className="w-full h-full">
+      <section className="w-full h-full">
         <div className="w-full h-full flex flex-col justify-between text-white p-4 absolute z-50">
           <header className="flex justify-between tracking-wide">
-            <Link href={"https://blog.mazka.dev/"} data-scroll>
-              Blog
-            </Link>
-            <Link href={"https://github.com/mazkaaa"} data-scroll>
-              Github
-            </Link>
+            <Link href={"https://blog.mazka.dev/"}>Blog</Link>
+            <Link href={"https://github.com/mazkaaa"}>Github</Link>
           </header>
-          <div
-            className="flex flex-col items-center"
-            data-scroll
-            data-scroll-speed="2"
-          >
+          <div className="flex flex-col items-center">
             <span className="text-white text-3xl tracking-wide">
               Muhammad Azka
             </span>
@@ -168,14 +175,57 @@ export default function Home() {
           init={particlesInit}
           loaded={particlesLoaded}
           options={particleOptions}
-          data-scroll
         />
       </section>
-      <section className="container mx-auto p-4" data-scroll-section>
-        <p className="text-white" data-scroll-delay="5">
-          I&apos;m Muhammad Azka.
-        </p>
+      <section className="container mt-20 mx-auto p-4 max-w-7xl flex space-x-12">
+        <div className="max-w-xl text-white space-y-4">
+          <h1 className="text-6xl font-bold tracking-wide">
+            Hi, I&apos;m Azka
+          </h1>
+          <section className="space-y-2">
+            <p>
+              a frontend developer, tech enthusiast, augmented reality
+              developer, game developer, and photographer.
+            </p>
+            <p>
+              With a passion for creating visually stunning websites and
+              seamless user experiences, I bring designs to life using HTML,
+              CSS, and JavaScript. I&apos;m always exploring new technologies
+              and frameworks to push boundaries. Additionally, I specialize in
+              developing immersive augmented reality experiences and crafting
+              captivating games.
+            </p>
+          </section>
+        </div>
+        <div className="w-1/2">
+          <Image src={"/IMG_4452.jpg"} width={1080} height={1085} alt="Azka" />
+        </div>
       </section>
-    </>
+      <section className="container mt-36 mx-auto p-4 max-w-7xl flex flex-col">
+        <h3 className="text-xl text-white">recent works</h3>
+        <ul className="text-white text-9xl tracking-wide uppercase font-bold">
+          <li className="inline-flex items-center space-x-6 cursor-pointer">
+            <span className="font-semibold text-xl">01. </span>
+            <span>SIP HPK</span>
+          </li>
+          <li className="inline-flex items-center space-x-6 cursor-pointer">
+            <span className="font-semibold text-xl">02. </span>
+            <span>wallnotes</span>
+          </li>
+          <li className="inline-flex items-center space-x-6 cursor-pointer">
+            <span className="font-semibold text-xl">03. </span>
+            <span>market insight</span>
+          </li>
+          <li className="inline-flex items-center space-x-6 cursor-pointer">
+            <span className="font-semibold text-xl">04. </span>
+            <span>BP Tapera CMS</span>
+          </li>
+          <li className="inline-flex items-center space-x-6 cursor-pointer">
+            <span className="font-semibold text-xl">05. </span>
+            <span>otentikator</span>
+          </li>
+        </ul>
+      </section>
+    </div>
   );
 }
