@@ -201,28 +201,28 @@ export default function Home() {
           <Image src={"/IMG_4452.jpg"} width={1080} height={1085} alt="Azka" />
         </div>
       </section>
-      <section className="container mt-36 mx-auto p-4 max-w-7xl flex flex-col">
+      <section className="container mt-36 mx-auto p-4 max-w-7xl flex flex-col space-y-8">
         <h3 className="text-xl text-white">recent works</h3>
-        <ul className="text-white text-9xl tracking-wide uppercase font-bold">
+        <ul className="text-white tracking-wide uppercase font-bold flex flex-col space-y-2">
           <li className="inline-flex items-center space-x-6 cursor-pointer">
             <span className="font-semibold text-xl">01. </span>
-            <span>SIP HPK</span>
+            <span className="text-9xl">SIP HPK</span>
           </li>
           <li className="inline-flex items-center space-x-6 cursor-pointer">
             <span className="font-semibold text-xl">02. </span>
-            <span>wallnotes</span>
+            <span className="text-9xl">wallnotes</span>
           </li>
           <li className="inline-flex items-center space-x-6 cursor-pointer">
             <span className="font-semibold text-xl">03. </span>
-            <span>market insight</span>
+            <span className="text-9xl">market insight</span>
           </li>
           <li className="inline-flex items-center space-x-6 cursor-pointer">
             <span className="font-semibold text-xl">04. </span>
-            <span>BP Tapera CMS</span>
+            <span className="text-9xl">BP Tapera CMS</span>
           </li>
           <li className="inline-flex items-center space-x-6 cursor-pointer">
             <span className="font-semibold text-xl">05. </span>
-            <span>otentikator</span>
+            <span className="text-9xl">otentikator</span>
           </li>
         </ul>
       </section>
