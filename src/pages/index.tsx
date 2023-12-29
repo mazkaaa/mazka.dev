@@ -1,12 +1,11 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from "react";
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
-
   // const refScrollContainer = useRef(null);
 
   // useEffect(() => {
@@ -24,7 +23,7 @@ export default function Home() {
   const particleOptions: ISourceOptions = {
     zLayers: 100,
     fullScreen: {
-      enable: false
+      enable: false,
     },
     particles: {
       collisions: {
@@ -138,7 +137,6 @@ export default function Home() {
     retina_detect: true,
   };
   const particlesInit = useCallback(async (engine: Engine) => {
-
     // you can initialize the tsParticles instance (engine) here, adding custom shapes or presets
     // this loads the tsparticles package bundle, it's the easiest method for getting everything ready
     // starting from v2 you can add only the features you need reducing the bundle size
@@ -153,21 +151,35 @@ export default function Home() {
   );
 
   return (
-    <div className="w-full h-full">
-      <section className="w-full h-full">
+    <div className="flex flex-col">
+      <section className="w-screen h-screen">
         <div className="w-full h-full flex flex-col justify-between text-white p-4 absolute z-50">
           <header className="flex justify-between tracking-wide">
             <Link href={"https://blog.mazka.dev/"}>Blog</Link>
             <Link href={"https://github.com/mazkaaa"}>Github</Link>
           </header>
-          <div className="flex flex-col items-center">
+          {/* <div className="flex flex-col items-center">
             <span className="text-white text-3xl tracking-wide">
               Muhammad Azka
             </span>
             <span className="text-gray-400 text-sm tracking-wider">
               Web Developer / AR Developer / Photographer
             </span>
+          </div> */}
+          <div className="flex flex-col items-center font-semibold text-9xl w-full px-20 gap-y-2">
+            <div className="flex flex-row justify-between w-full">
+              <span>I&apos;M</span>
+              <span>MUHAMMAD</span>
+              <span>AZKA</span>
+            </div>
+            <div className="flex justify-start w-full">
+              <span>SOFTWARE ENGINEER</span>
+            </div>
+            <div className="flex justify-end w-full">
+              <span>& PHOTOGRAPHER.</span>
+            </div>
           </div>
+
           <div className="flex justify-center tracking-wide">Learn more</div>
         </div>
         <Particles
@@ -177,31 +189,37 @@ export default function Home() {
           options={particleOptions}
         />
       </section>
-      <section className="container mt-20 mx-auto p-4 max-w-7xl flex space-x-12">
-        <div className="max-w-xl text-white space-y-4">
-          <h1 className="text-6xl font-bold tracking-wide">
-            Hi, I&apos;m Azka
-          </h1>
-          <section className="space-y-2">
-            <p>
-              a frontend developer, tech enthusiast, augmented reality
-              developer, game developer, and photographer.
-            </p>
-            <p>
-              With a passion for creating visually stunning websites and
-              seamless user experiences, I bring designs to life using HTML,
-              CSS, and JavaScript. I&apos;m always exploring new technologies
-              and frameworks to push boundaries. Additionally, I specialize in
-              developing immersive augmented reality experiences and crafting
-              captivating games.
-            </p>
-          </section>
-        </div>
-        <div className="w-1/2">
-          <Image src={"/IMG_4452.jpg"} width={1080} height={1085} alt="Azka" />
+
+      <section className="w-screen h-screen">
+        <div className="h-full w-full px-16 flex flex-col justify-center relative">
+          {/* <div className="text-white space-y-4 w-full max-w-4xl z-20 mix-blend-difference">
+            <section className="space-y-4 text-5xl tracking-wide">
+              <p className="">
+                Frontend developer and tech enthusiast with a flair for visually
+                stunning websites.
+              </p>
+              <p>
+                I bring designs to life using HTML, CSS, and JavaScript, always
+                pushing boundaries with new technologies.
+              </p>
+              <p>
+                Specializing in immersive augmented reality experiences and
+                captivating game development.
+              </p>
+            </section>
+          </div>
+          <div className="absolute right-36 w-2/5">
+            <Image
+              src={"/IMG_4452.jpg"}
+              width={1080}
+              height={1085}
+              alt="Azka"
+            />
+          </div> */}
         </div>
       </section>
-      <section className="container mt-36 mx-auto p-4 max-w-7xl flex flex-col space-y-8">
+
+      <section className="container mx-16 p-4 max-w-7xl flex flex-col space-y-8 h-screen">
         <h3 className="text-xl text-white">recent works</h3>
         <ul className="text-white tracking-wide uppercase font-bold flex flex-col space-y-2">
           <li className="inline-flex items-center space-x-6 cursor-pointer">
