@@ -4,21 +4,26 @@ import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Link from "next/link";
 import Image from "next/image";
+import LocomotiveScroll from "locomotive-scroll";
 
 export default function Home() {
-  // const refScrollContainer = useRef(null);
+  const refScrollContainer = useRef(null);
+  const locScroll = useRef<LocomotiveScroll>();
 
-  // useEffect(() => {
-  //   async function getLocomotive() {
-  //     const Locomotive = (await import("locomotive-scroll")).default;
-  //     new Locomotive({
-  //       el: refScrollContainer.current!,
-  //       smooth: true,
-  //     });
-  //   }
+  useEffect(() => {
+    async function getLocomotive() {
+      const Locomotive = (await import("locomotive-scroll")).default;
+      locScroll.current = new Locomotive({
+        el: refScrollContainer.current!,
+        smooth: true,
+      });
+    }
 
-  //   getLocomotive();
-  // }, []);
+    getLocomotive();
+    return () => {
+      locScroll.current?.destroy();
+    }
+  }, []);
 
   const particleOptions: ISourceOptions = {
     zLayers: 100,
@@ -151,8 +156,12 @@ export default function Home() {
   );
 
   return (
-    <div className="flex flex-col">
-      <section className="w-screen h-screen">
+    <div
+      className="flex flex-col fixed"
+      data-scroll-container
+      ref={refScrollContainer}
+    >
+      <section className="w-screen h-screen" data-scroll-section>
         <div className="w-full h-full flex flex-col justify-between text-white p-4 absolute z-50">
           <header className="flex justify-between tracking-wide">
             <Link href={"https://blog.mazka.dev/"}>Blog</Link>
@@ -166,21 +175,28 @@ export default function Home() {
               Web Developer / AR Developer / Photographer
             </span>
           </div> */}
-          <div className="flex flex-col items-center font-semibold text-9xl w-full px-20 gap-y-2">
+          <div className="flex flex-col items-center font-semibold text-8xl w-full px-20 gap-y-2">
             <div className="flex flex-row justify-between w-full">
-              <span>I&apos;M</span>
+              {/* <span>I&apos;M</span> */}
               <span>MUHAMMAD</span>
               <span>AZKA</span>
             </div>
-            <div className="flex justify-start w-full">
+            <div className="flex justify-end w-full">
               <span>SOFTWARE ENGINEER</span>
             </div>
-            <div className="flex justify-end w-full">
+            <div className="flex justify-start w-full">
               <span>& PHOTOGRAPHER.</span>
             </div>
           </div>
 
-          <div className="flex justify-center tracking-wide">Learn more</div>
+          <button
+            onClick={() => {
+              locScroll.current?.scrollTo("#aboutme");
+            }}
+            className="flex justify-center tracking-wide self-center"
+          >
+            Learn more
+          </button>
         </div>
         <Particles
           id="tsparticles"
@@ -190,25 +206,37 @@ export default function Home() {
         />
       </section>
 
-      <section className="w-screen h-screen">
-        <div className="h-full w-full px-16 flex flex-col justify-center relative">
-          {/* <div className="text-white space-y-4 w-full max-w-4xl z-20 mix-blend-difference">
-            <section className="space-y-4 text-5xl tracking-wide">
-              <p className="">
-                Frontend developer and tech enthusiast with a flair for visually
-                stunning websites.
+      <section id="aboutme" className="w-screen h-screen" data-scroll-section>
+        <div
+          className="h-full w-full px-16 flex items-center relative"
+          data-scroll
+        >
+          <div
+            className="text-neutral-500 space-y-4 w-1/2 z-20 mix-blend-difference"
+            data-scroll
+          >
+            <section className="space-y-2 text-xl tracking-wide uppercase">
+              {/* <h2 className="lowercase text-4xl pb-4 text-white">hello, i&apos;m azka.</h2> */}
+              <p className="" data-scroll data-scroll-delay="1">
+                <span className="text-white">Frontend developer</span> and{" "}
+                <span className="text-white">tech enthusiast</span> with a flair
+                for{" "}
+                <span className="text-white">visually stunning websites</span>.
+              </p>
+              <p data-scroll data-scroll-delay="2">
+                I bring designs to life using{" "}
+                <span className="text-white">HTML, CSS, and JavaScript</span>,
+                always pushing boundaries with new technologies.
               </p>
               <p>
-                I bring designs to life using HTML, CSS, and JavaScript, always
-                pushing boundaries with new technologies.
-              </p>
-              <p>
-                Specializing in immersive augmented reality experiences and
-                captivating game development.
+                Specializing in immersive{" "}
+                <span className="text-white">augmented reality</span>{" "}
+                experiences and captivating{" "}
+                <span className="text-white">game development</span>.
               </p>
             </section>
           </div>
-          <div className="absolute right-36 w-2/5">
+          {/* <div className="w-1/2">
             <Image
               src={"/IMG_4452.jpg"}
               width={1080}
@@ -219,7 +247,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container mx-16 p-4 max-w-7xl flex flex-col space-y-8 h-screen">
+      <section
+        className="container mx-16 p-4 max-w-7xl flex flex-col space-y-4 h-screen"
+        data-scroll-section
+      >
         <h3 className="text-xl text-white">recent works</h3>
         <ul className="text-white tracking-wide uppercase font-bold flex flex-col space-y-2">
           <li className="inline-flex items-center space-x-6 cursor-pointer">
