@@ -1,10 +1,12 @@
+"use client";
+
 import React, { useCallback, useEffect, useRef } from "react";
 import type { Container, Engine, ISourceOptions } from "tsparticles-engine";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 import Link from "next/link";
-import Image from "next/image";
 import LocomotiveScroll from "locomotive-scroll";
+import { recentWorkData } from "@/data/recent-work";
 
 export default function Home() {
   const refScrollContainer = useRef(null);
@@ -22,7 +24,7 @@ export default function Home() {
     getLocomotive();
     return () => {
       locScroll.current?.destroy();
-    }
+    };
   }, []);
 
   const particleOptions: ISourceOptions = {
@@ -154,7 +156,6 @@ export default function Home() {
     },
     []
   );
-
   return (
     <div
       className="flex flex-col fixed"
@@ -212,7 +213,7 @@ export default function Home() {
           data-scroll
         >
           <div
-            className="text-neutral-500 space-y-4 w-1/2 z-20 mix-blend-difference"
+            className="text-neutral-500 space-y-6 w-1/2 z-20 mix-blend-difference"
             data-scroll
           >
             <section className="space-y-2 text-xl tracking-wide uppercase">
@@ -229,8 +230,9 @@ export default function Home() {
                 always pushing boundaries with new technologies.
               </p>
               <p>
-                Specializing in immersive{" "}
-                <span className="text-white">augmented reality</span>{" "}
+                Specializing in advanced{" "}
+                <span className="text-white"> frontend development</span>,
+                immersive <span className="text-white">augmented reality</span>{" "}
                 experiences and captivating{" "}
                 <span className="text-white">game development</span>.
               </p>
@@ -248,32 +250,36 @@ export default function Home() {
       </section>
 
       <section
-        className="container mx-16 p-4 max-w-7xl flex flex-col space-y-4 h-screen"
+        id="recentworks"
+        className="container mx-16 p-4 max-w-full flex flex-col space-y-4 h-screen"
         data-scroll-section
       >
         <h3 className="text-xl text-white">recent works</h3>
         <ul className="text-white tracking-wide uppercase font-bold flex flex-col space-y-2">
-          <li className="inline-flex items-center space-x-6 cursor-pointer">
-            <span className="font-semibold text-xl">01. </span>
-            <span className="text-9xl">SIP HPK</span>
-          </li>
-          <li className="inline-flex items-center space-x-6 cursor-pointer">
-            <span className="font-semibold text-xl">02. </span>
-            <span className="text-9xl">wallnotes</span>
-          </li>
-          <li className="inline-flex items-center space-x-6 cursor-pointer">
-            <span className="font-semibold text-xl">03. </span>
-            <span className="text-9xl">market insight</span>
-          </li>
-          <li className="inline-flex items-center space-x-6 cursor-pointer">
-            <span className="font-semibold text-xl">04. </span>
-            <span className="text-9xl">BP Tapera CMS</span>
-          </li>
-          <li className="inline-flex items-center space-x-6 cursor-pointer">
-            <span className="font-semibold text-xl">05. </span>
-            <span className="text-9xl">otentikator</span>
-          </li>
+          {recentWorkData.map((work, index) => (
+            <li
+              key={index}
+              className="inline-flex items-center space-x-6 cursor-pointer"
+            >
+              <span className="font-semibold text-xl">{`0${index + 1}.`}</span>
+              <div className="space-x-4">
+                <span className="text-9xl">{work.title}</span>
+                {work.shorthand ? (
+                  <span className="text-sm font-normal">
+                    ({work.shorthand})
+                  </span>
+                ) : null}
+              </div>
+            </li>
+          ))}
         </ul>
+      </section>
+
+      <section
+        className="container mx-16 p-4 max-w-full flex flex-col space-y-4 h-screen"
+        data-scroll-section
+      >
+        <h3 className="text-xl text-white">expertises</h3>
       </section>
     </div>
   );
