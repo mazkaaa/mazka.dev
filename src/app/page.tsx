@@ -7,25 +7,32 @@ import { loadFull } from "tsparticles";
 import Link from "next/link";
 import LocomotiveScroll from "locomotive-scroll";
 import { recentWorkData } from "@/data/recent-work";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function Home() {
-  const refScrollContainer = useRef(null);
-  const locScroll = useRef<LocomotiveScroll>();
+  const aboutRef = useRef<HTMLElement | null>(null);
+  // const refScrollContainer = useRef(null);
+  // const locScroll = useRef<LocomotiveScroll>();
 
-  useEffect(() => {
-    async function getLocomotive() {
-      const Locomotive = (await import("locomotive-scroll")).default;
-      locScroll.current = new Locomotive({
-        el: refScrollContainer.current!,
-        smooth: true,
-      });
-    }
+  // useEffect(() => {
+  //   async function getLocomotive() {
+  //     const Locomotive = (await import("locomotive-scroll")).default;
+  //     locScroll.current = new Locomotive({
+  //       el: refScrollContainer.current!,
+  //       smooth: true,
+  //     });
+  //   }
 
-    getLocomotive();
-    return () => {
-      locScroll.current?.destroy();
-    };
-  }, []);
+  //   getLocomotive();
+  //   return () => {
+  //     locScroll.current?.destroy();
+  //   };
+  // }, []);
 
   const particleOptions: ISourceOptions = {
     zLayers: 100,
@@ -157,28 +164,27 @@ export default function Home() {
     []
   );
   return (
-    <div
-      className="flex flex-col fixed"
-      data-scroll-container
-      ref={refScrollContainer}
-    >
-      <section className="w-screen h-screen" data-scroll-section>
-        <div className="w-full h-full flex flex-col justify-between text-white p-4 absolute z-50">
+    <div className="flex flex-col snap-mandatory snap-y overflow-y-scroll">
+      <section id="landing" className="w-screen h-screen snap-center">
+        <div className="w-full h-full flex flex-col justify-between text-white p-4 z-50 absolute">
           <header className="flex justify-between tracking-wide">
-            <Link href={"https://blog.mazka.dev/"}>Blog</Link>
-            <Link href={"https://github.com/mazkaaa"}>Github</Link>
+            <Link
+              className="underline-effect-small"
+              href={"https://blog.mazka.dev/"}
+              target="_blank"
+            >
+              Blog
+            </Link>
+            <Link
+              className="underline-effect-small"
+              href={"https://github.com/mazkaaa"}
+              target="_blank"
+            >
+              Github
+            </Link>
           </header>
-          {/* <div className="flex flex-col items-center">
-            <span className="text-white text-3xl tracking-wide">
-              Muhammad Azka
-            </span>
-            <span className="text-gray-400 text-sm tracking-wider">
-              Web Developer / AR Developer / Photographer
-            </span>
-          </div> */}
           <div className="flex flex-col items-center font-semibold text-8xl w-full px-20 gap-y-2">
             <div className="flex flex-row justify-between w-full">
-              {/* <span>I&apos;M</span> */}
               <span>MUHAMMAD</span>
               <span>AZKA</span>
             </div>
@@ -192,9 +198,12 @@ export default function Home() {
 
           <button
             onClick={() => {
-              locScroll.current?.scrollTo("#aboutme");
+              // locScroll.current?.scrollTo("#aboutme");
+              aboutRef.current?.scrollIntoView({
+                behavior: "smooth",
+              });
             }}
-            className="flex justify-center tracking-wide self-center"
+            className="flex justify-center tracking-wide self-center underline-effect-small"
           >
             Learn more
           </button>
@@ -207,79 +216,88 @@ export default function Home() {
         />
       </section>
 
-      <section id="aboutme" className="w-screen h-screen" data-scroll-section>
-        <div
-          className="h-full w-full px-16 flex items-center relative"
-          data-scroll
-        >
-          <div
-            className="text-neutral-500 space-y-6 w-1/2 z-20 mix-blend-difference"
-            data-scroll
-          >
+      <section
+        ref={aboutRef}
+        id="aboutme"
+        className="w-screen h-screen snap-center"
+      >
+        <div className="h-full w-full px-16 flex items-center relative">
+          <div className="text-neutral-500 space-y-6 w-2/3 z-20 mix-blend-difference">
             <section className="space-y-2 text-xl tracking-wide uppercase">
-              {/* <h2 className="lowercase text-4xl pb-4 text-white">hello, i&apos;m azka.</h2> */}
-              <p className="" data-scroll data-scroll-delay="1">
-                <span className="text-white">Frontend developer</span> and{" "}
-                <span className="text-white">tech enthusiast</span> with a flair
-                for{" "}
-                <span className="text-white">visually stunning websites</span>.
+              <p>
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  Frontend engineer
+                </span>{" "}
+                and{" "}
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  tech enthusiast
+                </span>{" "}
+                with a flair for{" "}
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  visually stunning websites
+                </span>
+                .
               </p>
-              <p data-scroll data-scroll-delay="2">
+              <p>
                 I bring designs to life using{" "}
-                <span className="text-white">HTML, CSS, and JavaScript</span>,
-                always pushing boundaries with new technologies.
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  HTML, CSS, and JavaScript
+                </span>
+                , always pushing boundaries with new technologies.
               </p>
               <p>
                 Specializing in advanced{" "}
-                <span className="text-white"> frontend development</span>,
-                immersive <span className="text-white">augmented reality</span>{" "}
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  {" "}
+                  frontend development
+                </span>
+                , immersive{" "}
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  augmented reality
+                </span>{" "}
                 experiences and captivating{" "}
-                <span className="text-white">game development</span>.
+                <span className="text-white underline-effect-about whitespace-nowrap">
+                  game development
+                </span>
+                .
               </p>
             </section>
           </div>
-          {/* <div className="w-1/2">
-            <Image
-              src={"/IMG_4452.jpg"}
-              width={1080}
-              height={1085}
-              alt="Azka"
-            />
-          </div> */}
         </div>
       </section>
 
       <section
         id="recentworks"
-        className="container mx-16 p-4 max-w-full flex flex-col space-y-4 h-screen"
-        data-scroll-section
+        className="container py-6 px-16 max-w-full flex flex-col space-y-4 h-screen snap-start"
       >
         <h3 className="text-xl text-white">recent works</h3>
-        <ul className="text-white tracking-wide uppercase font-bold flex flex-col space-y-2">
-          {recentWorkData.map((work, index) => (
-            <li
-              key={index}
-              className="inline-flex items-center space-x-6 cursor-pointer"
-            >
-              <span className="font-semibold text-xl">{`0${index + 1}.`}</span>
-              <div className="space-x-4">
-                <span className="text-9xl">{work.title}</span>
-                {work.shorthand ? (
-                  <span className="text-sm font-normal">
-                    ({work.shorthand})
-                  </span>
-                ) : null}
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
 
-      <section
-        className="container mx-16 p-4 max-w-full flex flex-col space-y-4 h-screen"
-        data-scroll-section
-      >
-        <h3 className="text-xl text-white">expertises</h3>
+        <Accordion type="single" collapsible>
+          <ul className="text-white flex flex-col">
+            {recentWorkData
+              .sort((a, b) => a.title.localeCompare(b.title))
+              .map((work, index) => (
+                <li
+                  key={index}
+                  className="items-center flex w-full grow space-x-6 cursor-pointer"
+                >
+                  <span className="font-semibold text-xl">{`0${
+                    index + 1
+                  }.`}</span>
+                  <AccordionItem className="w-full" value={work.title}>
+                    <AccordionTrigger className="hover:no-underline">
+                      <h1 className="text-8xl tracking-wide uppercase font-bold ">
+                        {work.title}
+                      </h1>
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <p className="text-xl">{work.description}</p>
+                    </AccordionContent>
+                  </AccordionItem>
+                </li>
+              ))}
+          </ul>
+        </Accordion>
       </section>
     </div>
   );
