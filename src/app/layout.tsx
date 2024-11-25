@@ -29,7 +29,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="overflow-y-scroll">{children}</main>
+          <main className="">{children}</main>
         </ThemeProvider>
       </body>
       <Analytics />
