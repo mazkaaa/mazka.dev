@@ -299,6 +299,28 @@ export default function Home() {
           </ul>
         </Accordion>
       </section>
+
+      <section
+        id="showcases"
+        className="container py-6 max-w-full flex flex-col items-center justify-center space-y-4 h-screen snap-start"
+      >
+        <h3 className="text-xl text-white">showcase</h3>
+
+        <ul className="text-white flex space-x-4">
+          {recentWorkData
+            .sort((a, b) => a.title.localeCompare(b.title))
+            .map((work, index) => (
+              <li
+                key={index}
+                className="items-center flex w-full grow space-x-6 cursor-pointer"
+              >
+                <div className="bg-gray-800 w-72 h-36 flex flex-col items-center justify-center">
+                  {work.title}
+                </div>
+              </li>
+            ))}
+        </ul>
+      </section>
     </div>
   );
 }
