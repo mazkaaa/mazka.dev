@@ -164,8 +164,8 @@ export default function Home() {
     []
   );
   return (
-    <div className="flex flex-col snap-mandatory snap-y overflow-y-scroll">
-      <section id="landing" className="w-screen h-screen snap-center">
+    <div className="flex flex-col snap-mandatory snap-y">
+      <section id="landing" className="h-screen snap-center">
         <div className="w-full h-full flex flex-col justify-between text-white p-4 z-50 absolute">
           <header className="flex justify-between tracking-wide">
             <Link
@@ -216,11 +216,7 @@ export default function Home() {
         />
       </section>
 
-      <section
-        ref={aboutRef}
-        id="aboutme"
-        className="w-screen h-screen snap-center"
-      >
+      <section ref={aboutRef} id="aboutme" className="h-screen">
         <div className="h-full w-full px-16 flex items-center relative">
           <div className="text-neutral-500 space-y-6 w-2/3 z-20 mix-blend-difference">
             <section className="space-y-2 text-xl tracking-wide uppercase">

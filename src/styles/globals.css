@@ -12,25 +12,24 @@
 
 @layer components {
   .underline-effect-small {
-    @apply relative p-0
+    @apply relative p-0;
   }
   .underline-effect-small::after {
     @apply content-[''] absolute w-full h-[0.18rem] left-0 bottom-[-1px] bg-white origin-bottom-right hover:origin-bottom-left scale-x-0 hover:scale-x-100 transition-transform duration-300;
   }
   .underline-effect-about {
-    @apply relative p-0
+    @apply relative p-0;
   }
   .underline-effect-about::after {
-    @apply content-[''] absolute w-full h-[0.15rem] left-0 bottom-[-1px] bg-white origin-bottom-right hover:origin-bottom-left scale-x-0 hover:scale-x-100 transition-transform duration-300;
+    @apply content-[''] absolute w-full h-[0.12rem] left-0 bottom-[-1px] bg-white origin-bottom-right hover:origin-bottom-left scale-x-0 hover:scale-x-100 transition-transform duration-300;
   }
   .underline-effect-header {
-    @apply relative p-0
+    @apply relative p-0;
   }
   .underline-effect-header::after {
     @apply content-[''] absolute w-full h-2 left-0 bottom-[-1px] bg-white origin-bottom-right hover:origin-bottom-left scale-x-0 hover:scale-x-100 transition-transform duration-300;
   }
 }
-
 
 @layer base {
   :root {
