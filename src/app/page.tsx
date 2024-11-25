@@ -44,7 +44,7 @@ export default function Home() {
         enable: true,
       },
       number: {
-        value: 60,
+        value: 80,
         density: {
           enable: true,
           value_area: 800,
@@ -217,8 +217,8 @@ export default function Home() {
       </section>
 
       <section ref={aboutRef} id="aboutme" className="h-screen">
-        <div className="h-full w-full px-16 flex items-center relative">
-          <div className="text-neutral-500 space-y-6 w-2/3 z-20 mix-blend-difference">
+        <div className="h-full w-full px-5 flex items-center relative">
+          <div className="text-neutral-500 space-y-6 w-1/2 z-20 mix-blend-difference">
             <section className="space-y-2 text-xl tracking-wide uppercase">
               <p>
                 <span className="text-white underline-effect-about whitespace-nowrap">
@@ -264,7 +264,7 @@ export default function Home() {
 
       <section
         id="recentworks"
-        className="container py-6 px-16 max-w-full flex flex-col space-y-4 h-screen snap-start"
+        className="container py-6 px-5 max-w-full flex flex-col space-y-4 h-screen snap-start"
       >
         <h3 className="text-xl text-white">recent works</h3>
 
@@ -286,8 +286,43 @@ export default function Home() {
                         {work.title}
                       </h1>
                     </AccordionTrigger>
-                    <AccordionContent>
-                      <p className="text-xl">{work.description}</p>
+                    <AccordionContent className="space-y-6">
+                      <section className="space-y-2 w-full max-w-5xl">
+                        {work.description.map((desc, descIndex) => (
+                          <p key={descIndex} className="text-xl lowercase">
+                            {desc}
+                          </p>
+                        ))}
+                      </section>
+                      <section className="text-xl text-neutral-500 flex justify-end tracking-wide lowercase">
+                        <div className="space-y-2 w-80">
+                          <div className="flex flex-col">
+                            <h4>expertises</h4>
+                            <h4 className="text-white">
+                              {work.expertises
+                                ?.toString()
+                                .replaceAll(",", ", ")}
+                            </h4>
+                          </div>
+                          {work.clients ? (
+                            <div className="flex flex-col">
+                              <h4>clients</h4>
+                              <h4 className="text-white">
+                                {work.clients.toString().replaceAll(",", ", ")}
+                              </h4>
+                            </div>
+                          ) : null}
+                        </div>
+                      </section>
+                      {work.imageUrl ? (
+                        <section className="flex space-x-4">
+                          {work.imageUrl.map((image, imageIndex) => (
+                            <div className="w-full h-full" key={imageIndex}>
+                              <img className="w-full h-full" src={image} />
+                            </div>
+                          ))}
+                        </section>
+                      ) : null}
                     </AccordionContent>
                   </AccordionItem>
                 </li>
